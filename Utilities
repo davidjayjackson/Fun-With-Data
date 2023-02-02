@@ -1,1 +1,3 @@
- python -m pip install sample-stream
+ # From Data Science at the Command Line
+ * https://github.com/jeroenjanssens/dsutils.git
+ * python -m pip install sample-stream
