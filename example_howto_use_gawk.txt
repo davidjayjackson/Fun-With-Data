@@ -1,0 +1,23 @@
+# Session 2: 
+# Install git and chromium web browser
+# git_2.25.1 and git-man_2.25.1 and chromium-83-x6"underscrore"64
+# 
+# git clone Fun-With_Data repo:
+#  https://github.com/davidjayjackson/Fun-With-Data.git
+# Create you own github repo.
+#
+# Pulls rows where Column 3 ($3) contains "World"
+gawk -F, '$3 =="World"{print $0}' owid-covid-data.csv
+#Pulls rows where column 1 (iso_code contains OWID
+gawk -F, '$1 ~/^OWID/{print $0}' owid-covid-data.csv 
+# pulls rows that do not contain OWID in column (iso_code
+gawk -F, '$1 !~/OWID/{print $0}' owid-covid-data.csv 
+
+# ChatAI
+gawk -F, 'BEGIN{count=0}{count++; print $3 ","count}'
+gawk -F, '{print NR","$3}' owid-covid-data.csv
+# Return just the row count
+gawk -F, 'BEGIN{count=0} $1 ~/OWID/{count++} END{print "Total count: " count}'
+## Count by date or column
+# gawk '{count[$1]++} END {for (i in count) print i, count[i]}' filename
+gawk -F, '{count[$1]++} END {for (date in count) print date","count[date]}'
