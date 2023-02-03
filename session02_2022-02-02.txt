@@ -1,0 +1,27 @@
+# Pull Rows that contain the word "World" 
+head -1 owid-covid-data.csv >world.csv
+grep "World" owid-covid-data.csv  >> world.csv
+cut -d, -f1 world.csv |sort |uniq -c |less
+cut -d, -f4 world.csv |grep "World" >worldDates.csv
+
+# Rows that do not contain "World"
+grep -v "World" owid-covid-data.csv  >>noWorld.csv
+cut -d, -f1 world.csv |sort |uniq -c |less
+cut -d, -f1 noWorld.csv |sort |uniq -c |less
+
+
+
+
+# Create separate files for rows with OWID and without OWID
+head -1 owid-covid-data.csv > withOwid.csv
+grep "OWID"  owid-covid-data.csv >> withOwid.csv
+head -1 owid-covid-data.csv > noWorld.csv
+grep -v "OWID"  owid-covid-data.csv >> noWorld.csv
+
+
+
+
+
+
+
+
